@@ -1,0 +1,29 @@
+name: PHP Test
+on:
+  push:
+    branches: [ 'feature/*', 'bugfix/*', 'hotfix/*' ]
+jobs:
+  tests:
+    name: Backend Test
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.1'
+      - uses: actions/checkout@v3
+
+      - name: Install Dependencies
+        run: composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
+
+      - name: Copy .env
+        run: php -r "file_exists('.env') || copy('.env.example', '.env');"
+
+      - name: Generate key
+        run: php artisan key:generate
+
+      - name: Execute tests (Unit and Feature tests) via PHPUnit
+        run: vendor/bin/phpunit
+
+      - name: Execute phpstan (for coding errors)
+        run: vendor/bin/phpstan analyse --memory-limit=2G
