@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('workout_id')->constrained('workouts');
             $table->foreignId('exercise_id')->constrained('exercises');
+            $table->json('details')->nullable();
             $table->timestamps();
         });
     }

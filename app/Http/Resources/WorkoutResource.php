@@ -21,7 +21,14 @@ class WorkoutResource extends JsonResource
             'id' => $this->id,
             'name' => $this->name,
             'label' => $this->label,
-            'exercises' => $this->exercises
+            'exercises' => WorkoutExerciseResource::collection($this->exercises)->toArray($request)
+        ];
+    }
+
+    public function with(Request $request)
+    {
+        return [
+            'meta' => 'test'
         ];
     }
 }

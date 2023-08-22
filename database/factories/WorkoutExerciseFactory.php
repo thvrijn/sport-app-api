@@ -4,12 +4,13 @@ namespace Database\Factories;
 
 use App\Models\Exercise;
 use App\Models\Workout;
+use App\Models\WorkoutExercise;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\WorkoutExercises>
+ * @extends Factory<WorkoutExercise>
  */
-class WorkoutExercisesFactory extends Factory
+class WorkoutExerciseFactory extends Factory
 {
     /**
      * Define the model's default state.
