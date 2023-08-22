@@ -19,7 +19,7 @@ class WorkoutTest extends TestCase
         $this->getJson(route('workouts.index'))
             ->assertStatus(200)
             ->assertJson([
-                'data' => $workouts->map->only('id')->toArray()
+                'data' => $workouts->map->only('id')->toArray(),
             ]);
     }
 }
