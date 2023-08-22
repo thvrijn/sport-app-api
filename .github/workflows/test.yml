@@ -1,7 +1,7 @@
 name: PHP Test
 on:
   push:
-    branches: [ 'feature/*', 'bugfix/*', 'hotfix/*' ]
+    branches: [ 'master' ]
 jobs:
   tests:
     name: Backend Test
